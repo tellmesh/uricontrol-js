@@ -1,6 +1,6 @@
 {
   "name": "@uricore/js",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "URI-native control core for browser and Node.js: URI -> manifest -> policy -> handler -> events.",
   "type": "module",
   "main": "src/index.js",
@@ -20,9 +20,21 @@
     "demo:node": "node examples/node-server/server.mjs",
     "demo:page": "node examples/node-server/server.mjs --static examples/browser-page --port 8080"
   },
-  "keywords": ["uri", "cqrs", "event-sourcing", "control-plane", "browser", "node", "sse", "websocket"],
-  "author": "",
-  "license": "MIT",
+  "keywords": [
+    "uri",
+    "cqrs",
+    "event-sourcing",
+    "control-plane",
+    "browser",
+    "node",
+    "sse",
+    "websocket"
+  ],
+  "author": {
+    "name": "Tom Sapletta",
+    "email": "tom@sapletta.com"
+  },
+  "license": "Apache-2.0",
   "engines": {
     "node": ">=18"
   },

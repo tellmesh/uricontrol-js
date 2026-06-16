@@ -217,3 +217,8 @@ Pack knows technology.
 Core knows URI, manifest, policy, dispatch and events.
 Transport only carries envelopes.
 ```
+
+
+## License
+
+Licensed under Apache-2.0.
