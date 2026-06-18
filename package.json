@@ -1,5 +1,5 @@
 {
-  "name": "@uricore/js",
+  "name": "@uricontrol/js",
   "version": "0.1.2",
   "description": "URI-native control core for browser and Node.js: URI -> manifest -> policy -> handler -> events.",
   "type": "module",

@@ -37,7 +37,7 @@ export function createHttpUriServer({ runtime, staticDir = null, cors = true } =
   const sseClients = new Set();
 
   runtime.eventStore.subscribe?.((event) => {
-    const payload = `event: uricore.event\ndata: ${JSON.stringify(event)}\n\n`;
+    const payload = `event: uricontrol.event\ndata: ${JSON.stringify(event)}\n\n`;
     for (const res of sseClients) res.write(payload);
   });
 
@@ -53,7 +53,7 @@ export function createHttpUriServer({ runtime, staticDir = null, cors = true } =
       const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
 
       if (req.method === 'GET' && url.pathname === '/health') {
-        sendJson(res, 200, { ok: true, service: 'uricore-js' }, cors);
+        sendJson(res, 200, { ok: true, service: 'uricontrol-js' }, cors);
         return;
       }
 
@@ -76,7 +76,7 @@ export function createHttpUriServer({ runtime, staticDir = null, cors = true } =
           Connection: 'keep-alive',
           'Access-Control-Allow-Origin': '*',
         });
-        res.write(`event: uricore.ready\ndata: ${JSON.stringify({ ok: true })}\n\n`);
+        res.write(`event: uricontrol.ready\ndata: ${JSON.stringify({ ok: true })}\n\n`);
         sseClients.add(res);
         req.on('close', () => sseClients.delete(res));
         return;

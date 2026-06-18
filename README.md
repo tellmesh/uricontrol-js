@@ -1,6 +1,6 @@
-# uricore-js
+# uricontrol-js
 
-`uricore-js` is a small URI-native control core for browsers and Node.js.
+`uricontrol-js` is a small URI-native control core for browsers and Node.js.
 It is not an agent framework. It is a deterministic layer:
 
 ```txt
@@ -21,7 +21,7 @@ Traditional APIs often spread one operation across several representations:
 - queue event,
 - audit log entry.
 
-`uricore` makes the URI the shared semantic address:
+`uricontrol` makes the URI the shared semantic address:
 
 ```txt
 page://state/counter/command/increment
@@ -34,7 +34,7 @@ systemd://unit/nginx.service/command/restart
 ## Install / test
 
 ```bash
-cd uricore-js
+cd uricontrol-js
 npm test
 ```
 
@@ -52,7 +52,7 @@ import {
   MemoryEventStore,
   PolicyGate,
   UriControlRuntime,
-} from '@uricore/js';
+} from '@uricontrol/js';
 
 const manifest = {
   id: 'counter-pack',
@@ -105,7 +105,7 @@ Open:
 http://127.0.0.1:8080/
 ```
 
-The page has its own `uricore-js` runtime and can call:
+The page has its own `uricontrol-js` runtime and can call:
 
 ```txt
 page://state/counter/command/increment
@@ -170,14 +170,14 @@ Adapters expose that same contract through protocols:
 | WebSocket | bidirectional calls and events | `src/server/ws-server.js`, `src/transports/ws-client.js` |
 | BroadcastChannel | same-origin page/tab bridge | `src/transports/broadcast-channel.js` |
 | postMessage | iframe/window bridge | `src/transports/post-message.js` |
-| gRPC | service-to-service binary RPC skeleton | `src/server/grpc-adapter.js`, `contracts/proto/uricore/v1/envelope.proto` |
+| gRPC | service-to-service binary RPC skeleton | `src/server/grpc-adapter.js`, `contracts/proto/uricontrol/v1/envelope.proto` |
 
-## Suggested split with Python uricore
+## Suggested split with Python uricontrol
 
 ```txt
-uricore/       # Python core
-uricore-js/    # browser + Node core
-urisys/        # real system using both
+uricontrol/       # Python core
+uricontrol-js/    # browser + Node core
+urisys/           # real system using both
 ```
 
 `urisys` can import both runtimes and use the same envelope:
@@ -206,7 +206,7 @@ Response:
 - React/Vue/Svelte/Angular: use `HttpUriClient` in a service/store/composable.
 - Next.js/Nuxt/SvelteKit: route handler calls `runtime.call()`.
 - Express/Fastify/Hono: adapt `POST /uri/call` to `runtime.call()`.
-- FastAPI/Django/Flask: use the Python `uricore` runtime behind the same endpoint shape.
+- FastAPI/Django/Flask: use the Python `uricontrol` runtime behind the same endpoint shape.
 - NestJS: wrap `runtime.call()` in a provider/service and expose HTTP/WS gateways.
 - Electron/Tauri: use `page://...` for UI runtime and `native://...` for desktop/backend runtime.
 

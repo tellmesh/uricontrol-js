@@ -1,20 +1,20 @@
-# uricore-js fullstack demo
+# uricontrol-js fullstack demo
 
 This example shows three runtimes using the same envelope:
 
 ```txt
-browser uricore-js
+browser uricontrol-js
   page://state/counter/command/increment
         │
         ├─ HTTP POST /uri/call
         ▼
-Node uricore-js server
+Node uricontrol-js server
   node://counter/command/increment
   node://python/math/add
         │
         ├─ HTTP POST /uri/call
         ▼
-Python uricore-compatible backend
+Python uricontrol-compatible backend
   py://math/add
 ```
 

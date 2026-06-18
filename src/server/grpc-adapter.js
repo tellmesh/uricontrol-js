@@ -1,6 +1,6 @@
 // Optional gRPC adapter skeleton. Requires: npm install @grpc/grpc-js @grpc/proto-loader
 // It intentionally wraps the same runtime.call(uri, payload, context) contract as HTTP/WS/SSE.
-export async function createGrpcUriServer({ runtime, protoPath, packageName = 'uricore.v1', serviceName = 'UriControl' }) {
+export async function createGrpcUriServer({ runtime, protoPath, packageName = 'uricontrol.v1', serviceName = 'UriControl' }) {
   const grpc = await import('@grpc/grpc-js');
   const protoLoader = await import('@grpc/proto-loader');
 

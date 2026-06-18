@@ -20,7 +20,7 @@ const handlers = {
       body: JSON.stringify({
         uri: 'py://math/add',
         payload,
-        context: { approved: true, caller: 'uricore-nodejs-proxy' },
+        context: { approved: true, caller: 'uricontrol-nodejs-proxy' },
       }),
     });
     if (!response.ok) {
@@ -54,7 +54,7 @@ try {
 }
 
 server.listen(port, () => {
-  console.log(`uricore-js server listening on http://127.0.0.1:${port}`);
+  console.log(`uricontrol-js server listening on http://127.0.0.1:${port}`);
   console.log(`HTTP call: POST http://127.0.0.1:${port}/uri/call`);
   console.log(`SSE stream: http://127.0.0.1:${port}/uri/sse`);
   console.log(`Browser demo: http://127.0.0.1:${port}/`);

@@ -1,7 +1,7 @@
 import { requireHandler } from './registry.js';
 import { MemoryEventStore, newId } from './event-store.js';
 import { PolicyGate } from './policy.js';
-import { HandlerExecutionError, PolicyDeniedError, UriCoreError } from './errors.js';
+import { HandlerExecutionError, PolicyDeniedError, UriControlError } from './errors.js';
 
 export class UriControlRuntime {
   constructor({ registry, eventStore = new MemoryEventStore(), policy = new PolicyGate() } = {}) {
@@ -20,7 +20,7 @@ export class UriControlRuntime {
       const policyDecision = this.policy.check(route, payload, context);
 
       this.eventStore.append({
-        event_type: 'uricore.command.accepted',
+        event_type: 'uricontrol.command.accepted',
         source_uri: uri,
         command_id: commandId,
         operation: route.operation,
@@ -58,7 +58,7 @@ export class UriControlRuntime {
     } catch (error) {
       const normalized = this.#normalizeError(error);
       const event = this.eventStore.append({
-        event_type: route?.failure_event_type || 'uricore.operation.failed',
+        event_type: route?.failure_event_type || 'uricontrol.operation.failed',
         source_uri: uri,
         command_id: commandId,
         operation: route?.operation || null,
@@ -104,7 +104,7 @@ export class UriControlRuntime {
     if (error instanceof PolicyDeniedError) {
       return { type: 'policy_denied', message: error.message, details: error.details || {} };
     }
-    if (error instanceof UriCoreError) {
+    if (error instanceof UriControlError) {
       return { type: error.name, message: error.message, details: error.details || {} };
     }
     if (error instanceof Error) {

@@ -6,7 +6,7 @@ Run:
 python examples/python-backend/server.py
 ```
 
-It exposes the same envelope as uricore-js:
+It exposes the same envelope as uricontrol-js:
 
 ```bash
 curl -X POST http://127.0.0.1:8090/uri/call \

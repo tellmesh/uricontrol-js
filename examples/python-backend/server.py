@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Minimal Python-compatible URI backend.
 
-This uses the same /uri/call envelope as uricore-js. In a real project,
-replace the small dispatch below with the Python uricore runtime created
-in ../uricore/core/python/uri_control.
+This uses the same /uri/call envelope as uricontrol-js. In a real project,
+replace the small dispatch below with the Python uricontrol runtime created
+in ../uricontrol/core/python/uri_control.
 """
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -38,7 +38,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path.startswith("/health"):
-            self._json(200, {"ok": True, "service": "uricore-python-compatible"})
+            self._json(200, {"ok": True, "service": "uricontrol-python-compatible"})
             return
         if self.path.startswith("/uri/events"):
             self._json(200, {"ok": True, "events": EVENTS})
@@ -57,7 +57,7 @@ class Handler(BaseHTTPRequestHandler):
         command_id = f"cmd_{uuid.uuid4().hex[:12]}"
 
         append_event({
-            "event_type": "uricore.command.accepted",
+            "event_type": "uricontrol.command.accepted",
             "source_uri": uri,
             "command_id": command_id,
             "payload": payload,
@@ -75,7 +75,7 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         event = append_event({
-            "event_type": "uricore.operation.failed",
+            "event_type": "uricontrol.operation.failed",
             "source_uri": uri,
             "command_id": command_id,
             "error": {"type": "not_found", "message": f"Unsupported URI: {uri}"},
@@ -85,5 +85,5 @@ class Handler(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     server = HTTPServer(("127.0.0.1", 8090), Handler)
-    print("uricore Python-compatible backend on http://127.0.0.1:8090")
+    print("uricontrol Python-compatible backend on http://127.0.0.1:8090")
     server.serve_forever()

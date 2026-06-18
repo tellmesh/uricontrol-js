@@ -45,12 +45,12 @@ const handlers = {
 const registry = new CapabilityRegistry().loadManifest(pageManifest, handlers);
 const runtime = new UriControlRuntime({
   registry,
-  eventStore: new LocalStorageEventStore('uricore.demo.events'),
+  eventStore: new LocalStorageEventStore('uricontrol.demo.events'),
   policy: new PolicyGate({ requireApprovalForSideEffects: false }),
 });
 const nodeClient = new HttpUriClient(location.origin);
 const sse = new SseUriClient(`${location.origin}/uri/sse`);
-const bus = new BroadcastChannelBridge('uricore.demo.pagebus');
+const bus = new BroadcastChannelBridge('uricontrol.demo.pagebus');
 bus.attachRuntime(runtime);
 
 $('local-inc').onclick = async () => {

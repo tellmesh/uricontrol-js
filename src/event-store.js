@@ -41,7 +41,7 @@ export class MemoryEventStore {
 }
 
 export class LocalStorageEventStore extends MemoryEventStore {
-  constructor(key = 'uricore.events') {
+  constructor(key = 'uricontrol.events') {
     super();
     this.key = key;
     if (typeof localStorage !== 'undefined') {

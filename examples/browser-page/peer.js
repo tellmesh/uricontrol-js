@@ -31,8 +31,8 @@ const handlers = {
 
 const runtime = new UriControlRuntime({
   registry: new CapabilityRegistry().loadManifest(pageManifest, handlers),
-  eventStore: new LocalStorageEventStore('uricore.peer.events'),
+  eventStore: new LocalStorageEventStore('uricontrol.peer.events'),
   policy: new PolicyGate({ requireApprovalForSideEffects: false }),
 });
-new BroadcastChannelBridge('uricore.demo.pagebus').attachRuntime(runtime);
+new BroadcastChannelBridge('uricontrol.demo.pagebus').attachRuntime(runtime);
 render();

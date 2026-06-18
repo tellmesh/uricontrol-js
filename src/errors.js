@@ -1,4 +1,4 @@
-export class UriCoreError extends Error {
+export class UriControlError extends Error {
   constructor(message, details = {}) {
     super(message);
     this.name = this.constructor.name;
@@ -6,8 +6,8 @@ export class UriCoreError extends Error {
   }
 }
 
-export class UriParseError extends UriCoreError {}
-export class RouteNotFoundError extends UriCoreError {}
-export class PolicyDeniedError extends UriCoreError {}
-export class HandlerNotFoundError extends UriCoreError {}
-export class HandlerExecutionError extends UriCoreError {}
+export class UriParseError extends UriControlError {}
+export class RouteNotFoundError extends UriControlError {}
+export class PolicyDeniedError extends UriControlError {}
+export class HandlerNotFoundError extends UriControlError {}
+export class HandlerExecutionError extends UriControlError {}

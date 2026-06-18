@@ -17,7 +17,7 @@ export class SseUriClient {
         onEvent?.(event.data);
       }
     });
-    this.source.addEventListener('uricore.event', (event) => {
+    this.source.addEventListener('uricontrol.event', (event) => {
       try {
         onEvent?.(JSON.parse(event.data));
       } catch {
